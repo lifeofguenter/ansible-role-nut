@@ -18,5 +18,7 @@ install:
 script:
   - ansible-playbook -i tests/inventory --connection=local --syntax-check tests/test.yml
 
+  - sudo cat /etc/nut/ups.conf
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
