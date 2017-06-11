@@ -27,8 +27,14 @@
     - nut.conf
     - upsd.conf
     - upsd.users
-    - upsmon.conf
   become: yes
   notify:
     - restart_nut_driver
     - restart_nut_monitor
+
+- name: add monitor to upsmon.conf
+  blockinfile:
+    path: /etc/nut/upsmon.conf
+    block: |
+      MONITOR ups@localhost 1 upsmon {{ nut_upsmon_password }} master
+  become: yes
