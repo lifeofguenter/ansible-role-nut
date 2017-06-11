@@ -1,7 +1,7 @@
 ---
 
 - name: patch nutups_
-- replace:
+  replace:
     path: /usr/share/munin/plugins/nutups_
     regexp: '^(.*)upsc \$UPS |(*)$'
     replace: '\1upsc $UPS 2> /dev/null |\2'
