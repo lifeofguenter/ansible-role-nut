@@ -1,0 +1,21 @@
+---
+
+- name: restart_nut_driver
+  service:
+    name: nut-driver
+    state: restarted
+    enabled: yes
+  become: yes
+
+- name: restart_nut_monitor
+  service:
+    name: nut-monitor
+    state: restarted
+    enabled: yes
+  become: yes
+
+- name: nut_restart_munin_node
+  service:
+    name: munin-node
+    state: restarted
+  become: yes

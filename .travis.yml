@@ -1,0 +1,22 @@
+---
+
+language: python
+python: "2.7"
+sudo: required
+dist: trusty
+
+install:
+  # Install ansible
+  - pip install ansible
+
+  # Check ansible version
+  - ansible --version
+
+  # Create ansible.cfg with correct roles_path
+  - printf '[defaults]\nroles_path=../' > ansible.cfg
+
+script:
+  - ansible-playbook -i tests/inventory --connection=local --syntax-check tests/test.yml
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

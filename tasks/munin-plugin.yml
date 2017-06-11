@@ -1,0 +1,22 @@
+---
+
+- name: patch nutups_
+- replace:
+    path: /usr/share/munin/plugins/nutups_
+    regexp: '^(.*)upsc \$UPS |(*)$'
+    replace: '\1upsc $UPS 2> /dev/null |\2'
+    backup: yes
+  become: yes
+
+- name: enable nut plugins
+  file:
+    src: /usr/share/munin/plugins/nutups_
+    dest: /etc/munin/plugins/nutups_ups_{{ item }}
+    state: link
+  with_items:
+    - voltages
+    - charge
+    - freq
+    - current
+  become: yes
+  notify: nut_restart_munin_node

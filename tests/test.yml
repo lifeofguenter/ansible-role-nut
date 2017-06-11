@@ -1,0 +1,13 @@
+---
+
+- hosts: localhost
+  remote_user: root
+  vars:
+    nut_desc: RCT850VA
+    nut_driver: blazer_usb
+    nut_subdriver: cypress
+    nut_protocol: mustek
+    nut_vendorid: 0665
+    nut_productid: 5161
+  roles:
+    - ansible-role-nut
