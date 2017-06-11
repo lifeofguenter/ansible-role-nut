@@ -1,11 +1,7 @@
 ---
 
 - name: patch nutups_
-  replace:
-    path: /usr/share/munin/plugins/nutups_
-    regexp: '^(\s*)(upsc \$UPS |)(.*)$'
-    replace: '\1upsc $UPS 2> /dev/null |\2'
-    backup: yes
+  command: sed -i 's/upsc $UPS |/upsc $UPS 2> \/dev\/null/' /usr/share/munin/plugins/nutups_
   become: yes
 
 - name: enable nut plugins
