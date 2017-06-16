@@ -1,7 +1,7 @@
 ---
 
 - name: patch nutups_
-  command: sed -i 's/upsc $UPS |/upsc $UPS 2> \/dev\/null/' /usr/share/munin/plugins/nutups_
+  command: sed -i 's/upsc $UPS |/upsc $UPS 2> \/dev\/null |/' /usr/share/munin/plugins/nutups_
   become: yes
 
 - name: enable nut plugins
